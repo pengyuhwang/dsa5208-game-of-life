@@ -1,0 +1,302 @@
+[
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/block_stable_input.pbm",
+      "--steps",
+      "0",
+      "--output",
+      "figures/pbm/block_stable_t0.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 8,
+      "cols": 9,
+      "steps": 0,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 4,
+      "checksum_fnv1a64": "06940e0d2cda4a8d",
+      "kernel_seconds": 0.0,
+      "total_seconds": 2.5e-05
+    },
+    "grid": "figures/pbm/block_stable_t0.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/block_stable_input.pbm",
+      "--steps",
+      "1",
+      "--output",
+      "figures/pbm/block_stable_t1.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 8,
+      "cols": 9,
+      "steps": 1,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 4,
+      "checksum_fnv1a64": "06940e0d2cda4a8d",
+      "kernel_seconds": 1e-06,
+      "total_seconds": 1.9e-05
+    },
+    "grid": "figures/pbm/block_stable_t1.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/block_stable_input.pbm",
+      "--steps",
+      "2",
+      "--output",
+      "figures/pbm/block_stable_t2.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 8,
+      "cols": 9,
+      "steps": 2,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 4,
+      "checksum_fnv1a64": "06940e0d2cda4a8d",
+      "kernel_seconds": 0.0,
+      "total_seconds": 2.4e-05
+    },
+    "grid": "figures/pbm/block_stable_t2.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/blinker_odd_input.pbm",
+      "--steps",
+      "0",
+      "--output",
+      "figures/pbm/blinker_odd_t0.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 7,
+      "cols": 9,
+      "steps": 0,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 3,
+      "checksum_fnv1a64": "84c67b97d773e21a",
+      "kernel_seconds": 0.0,
+      "total_seconds": 1.8e-05
+    },
+    "grid": "figures/pbm/blinker_odd_t0.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/blinker_odd_input.pbm",
+      "--steps",
+      "1",
+      "--output",
+      "figures/pbm/blinker_odd_t1.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 7,
+      "cols": 9,
+      "steps": 1,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 3,
+      "checksum_fnv1a64": "935ca8606f93051a",
+      "kernel_seconds": 1e-06,
+      "total_seconds": 3.3e-05
+    },
+    "grid": "figures/pbm/blinker_odd_t1.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/blinker_odd_input.pbm",
+      "--steps",
+      "2",
+      "--output",
+      "figures/pbm/blinker_odd_t2.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 7,
+      "cols": 9,
+      "steps": 2,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 3,
+      "checksum_fnv1a64": "84c67b97d773e21a",
+      "kernel_seconds": 0.0,
+      "total_seconds": 2.5e-05
+    },
+    "grid": "figures/pbm/blinker_odd_t2.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/glider_wrap_input.pbm",
+      "--steps",
+      "0",
+      "--output",
+      "figures/pbm/glider_wrap_t0.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 12,
+      "cols": 13,
+      "steps": 0,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 5,
+      "checksum_fnv1a64": "8d59c753a6b79908",
+      "kernel_seconds": 1e-06,
+      "total_seconds": 2.6e-05
+    },
+    "grid": "figures/pbm/glider_wrap_t0.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/glider_wrap_input.pbm",
+      "--steps",
+      "4",
+      "--output",
+      "figures/pbm/glider_wrap_t4.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 12,
+      "cols": 13,
+      "steps": 4,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 5,
+      "checksum_fnv1a64": "2964e14c7e3281ac",
+      "kernel_seconds": 1e-06,
+      "total_seconds": 2.5e-05
+    },
+    "grid": "figures/pbm/glider_wrap_t4.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/glider_wrap_input.pbm",
+      "--steps",
+      "8",
+      "--output",
+      "figures/pbm/glider_wrap_t8.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 12,
+      "cols": 13,
+      "steps": 8,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 5,
+      "checksum_fnv1a64": "34d71e9b43b681d4",
+      "kernel_seconds": 2e-06,
+      "total_seconds": 2.2e-05
+    },
+    "grid": "figures/pbm/glider_wrap_t8.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  },
+  {
+    "command": [
+      "build/serial",
+      "--input",
+      "figures/pbm/glider_wrap_input.pbm",
+      "--steps",
+      "12",
+      "--output",
+      "figures/pbm/glider_wrap_t12.pbm"
+    ],
+    "metrics": {
+      "interface_version": "1.0",
+      "variant": "serial",
+      "rows": 12,
+      "cols": 13,
+      "steps": 12,
+      "init": "pbm",
+      "seed": null,
+      "density_ppm": null,
+      "ranks": 1,
+      "threads": 1,
+      "live_cells": 5,
+      "checksum_fnv1a64": "4104e93af61cd456",
+      "kernel_seconds": 2e-06,
+      "total_seconds": 2.6e-05
+    },
+    "grid": "figures/pbm/glider_wrap_t12.pbm",
+    "source_sha256": "34c10962749c24f243374853e8231be945f2b81074f30b8e4a40a81cae76dd22",
+    "binary_sha256": "866153209bf6295b3139ad0c2c12417563f1889b0e761869da3194d195a3ab1b"
+  }
+]

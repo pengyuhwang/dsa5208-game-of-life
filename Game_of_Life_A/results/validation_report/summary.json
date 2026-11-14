@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-11-12T13:03:03.977434+00:00",
+  "counts": {
+    "PASS": 98,
+    "FAIL": 0,
+    "BLOCKED": 0
+  },
+  "tests": 98,
+  "environment": "vanda",
+  "job_id": "1547875.stdct-mgmt-02",
+  "launcher": "mpirun -x OMP_NUM_THREADS"
+}

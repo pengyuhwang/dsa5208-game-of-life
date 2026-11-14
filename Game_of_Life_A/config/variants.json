@@ -1,0 +1,104 @@
+{
+  "note": "Only rank 0 writes output/JSON. Commands are Open MPI: -x forwards OMP_NUM_THREADS, which PBS otherwise overrides with the job's ompthreads value, so a run silently uses one thread. Use -genv on MPICH.",
+  "variants": [
+    {
+      "name": "mpi",
+      "required_paths": [
+        "build/mpi"
+      ],
+      "command": [
+        "mpirun",
+        "-x",
+        "OMP_NUM_THREADS",
+        "-np",
+        "{ranks}",
+        "./build/mpi",
+        "--input",
+        "{input}",
+        "--steps",
+        "{steps}",
+        "--output",
+        "{output}"
+      ],
+      "ranks": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "threads": [
+        1
+      ],
+      "benchmark_command": [
+        "mpirun",
+        "-x",
+        "OMP_NUM_THREADS",
+        "-np",
+        "{ranks}",
+        "./build/mpi",
+        "--rows",
+        "{rows}",
+        "--cols",
+        "{cols}",
+        "--steps",
+        "{steps}",
+        "--seed",
+        "{seed}",
+        "--density-ppm",
+        "{density_ppm}",
+        "--output",
+        "{output}"
+      ]
+    },
+    {
+      "name": "hybrid",
+      "required_paths": [
+        "build/hybrid"
+      ],
+      "command": [
+        "mpirun",
+        "-x",
+        "OMP_NUM_THREADS",
+        "-np",
+        "{ranks}",
+        "./build/hybrid",
+        "--input",
+        "{input}",
+        "--steps",
+        "{steps}",
+        "--output",
+        "{output}"
+      ],
+      "ranks": [
+        1,
+        2,
+        4
+      ],
+      "threads": [
+        1,
+        2,
+        4
+      ],
+      "benchmark_command": [
+        "mpirun",
+        "-x",
+        "OMP_NUM_THREADS",
+        "-np",
+        "{ranks}",
+        "./build/hybrid",
+        "--rows",
+        "{rows}",
+        "--cols",
+        "{cols}",
+        "--steps",
+        "{steps}",
+        "--seed",
+        "{seed}",
+        "--density-ppm",
+        "{density_ppm}",
+        "--output",
+        "{output}"
+      ]
+    }
+  ]
+}

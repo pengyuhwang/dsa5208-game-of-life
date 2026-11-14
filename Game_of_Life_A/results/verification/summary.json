@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-11-12T13:07:15.911806+00:00",
+  "counts": {
+    "PASS": 773,
+    "FAIL": 0,
+    "BLOCKED": 0
+  },
+  "full_grid_comparison": true,
+  "independent_oracle": true,
+  "all_requested_variants_verified": true,
+  "external_verification_requested": true,
+  "limitation": "No MPI/Hybrid correctness claim unless their actual runs pass."
+}

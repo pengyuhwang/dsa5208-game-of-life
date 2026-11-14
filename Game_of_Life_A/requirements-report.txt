@@ -1,0 +1,4 @@
+# Runtime verification, comparison and benchmark tools need only Python >=3.8.
+# Only regenerating PNG figures and the PDF requires these packages.
+Pillow>=10
+reportlab>=4

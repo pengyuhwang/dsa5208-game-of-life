@@ -1,0 +1,89 @@
+{
+  "timestamp_utc": "2026-11-03T06:55:13.548173+00:00",
+  "environment": "vanda",
+  "hostname": "IN-002",
+  "job_id": "1513317.stdct-mgmt-02",
+  "platform": "Linux-5.14.0-427.125.1.el9_4.x86_64-x86_64-with-glibc2.34",
+  "steps": 500,
+  "source_sha256": "9565b3a56fe9f1ff5d06b04394394eefdf06ef7967ea54df369a95011867a9a5",
+  "exponent_time_vs_cells": 1.0022973829024082,
+  "groups": [
+    {
+      "size": 256,
+      "cells": 65536,
+      "repeats": 3,
+      "median_seconds": 0.082367817,
+      "min_seconds": 0.082361817,
+      "max_seconds": 0.082430396,
+      "median_ns_per_cell_update": 2.513666290283203,
+      "checksum_fnv1a64": "06fb3bb7939a4ac4",
+      "live_cells": 3413
+    },
+    {
+      "size": 512,
+      "cells": 262144,
+      "repeats": 3,
+      "median_seconds": 0.340748629,
+      "min_seconds": 0.340717794,
+      "max_seconds": 0.356907871,
+      "median_ns_per_cell_update": 2.5997057266235353,
+      "checksum_fnv1a64": "b7499ab699634605",
+      "live_cells": 13758
+    },
+    {
+      "size": 1024,
+      "cells": 1048576,
+      "repeats": 3,
+      "median_seconds": 1.352717432,
+      "min_seconds": 1.352245323,
+      "max_seconds": 1.353173216,
+      "median_ns_per_cell_update": 2.580103744506836,
+      "checksum_fnv1a64": "da5027b24e41cc6c",
+      "live_cells": 56329
+    },
+    {
+      "size": 2048,
+      "cells": 4194304,
+      "repeats": 3,
+      "median_seconds": 5.450460872,
+      "min_seconds": 5.438237543,
+      "max_seconds": 5.458586644,
+      "median_ns_per_cell_update": 2.598982273101807,
+      "checksum_fnv1a64": "75d77a42e2e5f106",
+      "live_cells": 226949
+    },
+    {
+      "size": 4096,
+      "cells": 16777216,
+      "repeats": 3,
+      "median_seconds": 21.821307797,
+      "min_seconds": 21.768784938,
+      "max_seconds": 21.828846797,
+      "median_ns_per_cell_update": 2.6013025995492933,
+      "checksum_fnv1a64": "e805989df9f3154a",
+      "live_cells": 909939
+    },
+    {
+      "size": 8192,
+      "cells": 67108864,
+      "repeats": 3,
+      "median_seconds": 86.77205392,
+      "min_seconds": 86.759413974,
+      "max_seconds": 86.871600475,
+      "median_ns_per_cell_update": 2.586008725166321,
+      "checksum_fnv1a64": "89f8aa10d8e171c1",
+      "live_cells": 3631326
+    },
+    {
+      "size": 16384,
+      "cells": 268435456,
+      "repeats": 3,
+      "median_seconds": 347.833911378,
+      "min_seconds": 347.776966117,
+      "max_seconds": 347.96782708,
+      "median_ns_per_cell_update": 2.5915645910650493,
+      "checksum_fnv1a64": "596856165927bf94",
+      "live_cells": 14534357
+    }
+  ]
+}

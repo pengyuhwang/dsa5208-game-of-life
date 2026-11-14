@@ -1,0 +1,11 @@
+job=1530468.stdct-mgmt-02 queue=batch_gpu node=GN-A40-020
+date=2026-11-07T19:30:43+08:00
+gpu=NVIDIA A40, 46068 MiB
+cpu=Intel(R) Xeon(R) Platinum 8452Y
+nproc=36 Cpus_allowed_list: 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71
+numa: NUMA node0 CPU(s): 0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70;NUMA node1 CPU(s): 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71;
+modules=Currently Loaded Modulefiles: 1) shared 2) apptainer/1.4.1 3) hpcx 4) nvhpc-hpcx-cuda12/26.1 
+compiler=nvc 26.1-0 64-bit target on x86-64 Linux -tp sapphirerapids 
+mpirun=mpirun (Open MPI) 4.1.9a1
+sha256_mpi=256a5201ceda8e45f665e2118fbab67391df3692ef9cce22520cec23af3851de
+sha256_life=47a7557dc99b1c742e7be2d61c42aadabff66c59b00451c2f56946c6977254d8

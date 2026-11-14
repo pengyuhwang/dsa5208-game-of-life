@@ -1,0 +1,99 @@
+id,binary,case,decomp,comm,ranks,threads,runs,status,purpose,detail
+S01,serial,empty,,,1,1,1,PASS,An empty grid stays empty.,complete grid and JSON match the oracle
+S02,serial,single_dies,,,1,1,1,PASS,Underpopulation kills an isolated cell.,complete grid and JSON match the oracle
+S03,serial,block_stable,,,1,1,1,PASS,A still life is unchanged over 20 generations.,complete grid and JSON match the oracle
+S04,serial,blinker_odd,,,1,1,1,PASS,An oscillator has the known phase after one generation.,complete grid and JSON match the oracle
+S05,serial,blinker_even,,,1,1,1,PASS,The oscillator returns to its start after an even count.,complete grid and JSON match the oracle
+S06,serial,corner_block,,,1,1,1,PASS,"A block split across all four corners is stable, testing the torus corners.",complete grid and JSON match the oracle
+S07,serial,edge_blinker,,,1,1,1,PASS,An oscillator crossing the left and right edges.,complete grid and JSON match the oracle
+S08,serial,glider_four,,,1,1,1,PASS,A glider moves one row and column in four generations.,complete grid and JSON match the oracle
+S09,serial,glider_wrap,,,1,1,1,PASS,A glider crosses the bottom and right edges and keeps its shape.,complete grid and JSON match the oracle
+S10,serial,one_cell_alive,,,1,1,1,PASS,The smallest grid: wrapped offsets are counted with multiplicity.,complete grid and JSON match the oracle
+S11,serial,all_alive,,,1,1,1,PASS,Overcrowding kills a full grid.,complete grid and JSON match the oracle
+S12,serial,zero_steps,,,1,1,1,PASS,Zero generations return the input unchanged.,complete grid and JSON match the oracle
+S13,serial,local_rows_one,,,1,1,1,PASS,"Four rows, later used so each rank owns a single row.",complete grid and JSON match the oracle
+S14,serial,nondivisible_rows,,,1,1,1,PASS,"Five rows, later used so rank block sizes differ.",complete grid and JSON match the oracle
+S15,serial,exhaustive_3x3,,,1,1,512,PASS,"All 512 states of a 3x3 torus, one generation, reported as one test: this exhausts every neighbourhood of the rule.",complete grid and JSON match the oracle
+S16,serial,random_shapes,,,1,1,84,PASS,"84 random grids in 14 shapes, including single rows and columns, up to 25 generations, reported as one test.",complete grid and JSON match the oracle
+D01,mpi,glider_wrap,1d,blocking,1,1,1,PASS,Row blocks at P=1: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D02,mpi,glider_wrap,1d,blocking,2,1,1,PASS,Row blocks at P=2: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D03,mpi,glider_wrap,1d,blocking,3,1,1,PASS,Row blocks at P=3: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D04,mpi,glider_wrap,1d,blocking,4,1,1,PASS,Row blocks at P=4: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D05,mpi,glider_wrap,1d,blocking,6,1,1,PASS,Row blocks at P=6: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D06,mpi,glider_wrap,1d,blocking,8,1,1,PASS,Row blocks at P=8: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D07,mpi,glider_wrap,1d,blocking,9,1,1,PASS,Row blocks at P=9: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D08,mpi,glider_wrap,1d,blocking,12,1,1,PASS,Row blocks at P=12: halo rows and the wrapped ring.,complete grid and JSON match the oracle
+D09,mpi,glider_wrap,2d,blocking,1,1,1,PASS,Process grid for P=1: all eight ghost directions.,complete grid and JSON match the oracle
+D10,mpi,glider_wrap,2d,blocking,2,1,1,PASS,Process grid for P=2: all eight ghost directions.,complete grid and JSON match the oracle
+D11,mpi,glider_wrap,2d,blocking,3,1,1,PASS,Process grid for P=3: all eight ghost directions.,complete grid and JSON match the oracle
+D12,mpi,glider_wrap,2d,blocking,4,1,1,PASS,Process grid for P=4: all eight ghost directions.,complete grid and JSON match the oracle
+D13,mpi,glider_wrap,2d,blocking,6,1,1,PASS,Process grid for P=6: all eight ghost directions.,complete grid and JSON match the oracle
+D14,mpi,glider_wrap,2d,blocking,8,1,1,PASS,Process grid for P=8: all eight ghost directions.,complete grid and JSON match the oracle
+D15,mpi,glider_wrap,2d,blocking,9,1,1,PASS,Process grid for P=9: all eight ghost directions.,complete grid and JSON match the oracle
+D16,mpi,glider_wrap,2d,blocking,12,1,1,PASS,Process grid for P=12: all eight ghost directions.,complete grid and JSON match the oracle
+D17,mpi,local_rows_one,1d,blocking,4,1,1,PASS,Each rank owns one row in 1D.,complete grid and JSON match the oracle
+D18,mpi,local_rows_one,2d,blocking,4,1,1,PASS,"2x2 process grid, where north equals south and diagonal neighbours repeat.",complete grid and JSON match the oracle
+D19,mpi,local_rows_one,2d,blocking,16,1,1,PASS,4x4 process grid: every block is a single row.,complete grid and JSON match the oracle
+D20,mpi,local_cols_one,2d,blocking,4,1,1,PASS,2x2 process grid on a narrow grid.,complete grid and JSON match the oracle
+D21,mpi,local_cols_one,2d,blocking,16,1,1,PASS,4x4 process grid: every block is a single column.,complete grid and JSON match the oracle
+D22,mpi,nondivisible_rows,1d,blocking,2,1,1,PASS,Uneven row blocks at P=2.,complete grid and JSON match the oracle
+D23,mpi,nondivisible_rows,1d,blocking,4,1,1,PASS,Uneven row blocks at P=4.,complete grid and JSON match the oracle
+D24,mpi,nondivisible_rows,2d,blocking,2,1,1,PASS,Uneven rows and columns at P=2.,complete grid and JSON match the oracle
+D25,mpi,nondivisible_rows,2d,blocking,4,1,1,PASS,Uneven rows and columns at P=4.,complete grid and JSON match the oracle
+D26,mpi,nondivisible_rows,2d,blocking,6,1,1,PASS,Uneven rows and columns at P=6.,complete grid and JSON match the oracle
+D27,mpi,corner_block,1d,blocking,4,1,1,PASS,Corner ghosts in 1D come with the full halo row.,complete grid and JSON match the oracle
+D28,mpi,corner_block,2d,blocking,4,1,1,PASS,Corner ghosts need diagonal messages on a 2x2 process grid.,complete grid and JSON match the oracle
+D29,mpi,corner_block,2d,blocking,9,1,1,PASS,"Corner ghosts on a 3x3 process grid, with no repeated neighbours.",complete grid and JSON match the oracle
+D30,mpi,edge_blinker,2d,blocking,4,1,1,PASS,An oscillator crossing a block boundary.,complete grid and JSON match the oracle
+D31,mpi,one_cell_alive,1d,blocking,1,1,1,PASS,"One rank, one cell, 1D path.",complete grid and JSON match the oracle
+D32,mpi,one_cell_alive,2d,blocking,1,1,1,PASS,"One rank, one cell, 2D path.",complete grid and JSON match the oracle
+D33,mpi,all_alive,2d,blocking,4,1,1,PASS,Overcrowding across block boundaries.,complete grid and JSON match the oracle
+D34,mpi,zero_steps,1d,blocking,4,1,1,PASS,"Distribution and collection only, 1D: no update runs.",complete grid and JSON match the oracle
+D35,mpi,zero_steps,2d,blocking,4,1,1,PASS,"Distribution and collection only, 2D: no update runs.",complete grid and JSON match the oracle
+D36,mpi,single_row_grid,2d,blocking,3,1,1,PASS,A one-row grid on a 1x3 process grid.,complete grid and JSON match the oracle
+D37,mpi,single_col_grid,2d,blocking,3,1,1,PASS,A one-column grid on a 3x1 process grid.,complete grid and JSON match the oracle
+C01,mpi,glider_wrap,1d,nonblocking,2,1,1,PASS,"nonblocking at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C02,mpi,glider_wrap,1d,nonblocking,4,1,1,PASS,nonblocking at P=4.,complete grid and JSON match the oracle
+C03,mpi,nondivisible_rows,1d,nonblocking,4,1,1,PASS,nonblocking with uneven blocks.,complete grid and JSON match the oracle
+C04,mpi,local_rows_one,1d,nonblocking,4,1,1,PASS,nonblocking when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C05,mpi,glider_wrap,2d,nonblocking,2,1,1,PASS,"nonblocking at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C06,mpi,glider_wrap,2d,nonblocking,4,1,1,PASS,nonblocking at P=4.,complete grid and JSON match the oracle
+C07,mpi,nondivisible_rows,2d,nonblocking,4,1,1,PASS,nonblocking with uneven blocks.,complete grid and JSON match the oracle
+C08,mpi,local_rows_one,2d,nonblocking,4,1,1,PASS,nonblocking when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C09,mpi,glider_wrap,2d,nonblocking,8,1,1,PASS,nonblocking on a 2x4 process grid.,complete grid and JSON match the oracle
+C10,mpi,glider_wrap,1d,overlap,2,1,1,PASS,"overlap at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C11,mpi,glider_wrap,1d,overlap,4,1,1,PASS,overlap at P=4.,complete grid and JSON match the oracle
+C12,mpi,nondivisible_rows,1d,overlap,4,1,1,PASS,overlap with uneven blocks.,complete grid and JSON match the oracle
+C13,mpi,local_rows_one,1d,overlap,4,1,1,PASS,overlap when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C14,mpi,glider_wrap,2d,overlap,2,1,1,PASS,"overlap at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C15,mpi,glider_wrap,2d,overlap,4,1,1,PASS,overlap at P=4.,complete grid and JSON match the oracle
+C16,mpi,nondivisible_rows,2d,overlap,4,1,1,PASS,overlap with uneven blocks.,complete grid and JSON match the oracle
+C17,mpi,local_rows_one,2d,overlap,4,1,1,PASS,overlap when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C18,mpi,glider_wrap,2d,overlap,8,1,1,PASS,overlap on a 2x4 process grid.,complete grid and JSON match the oracle
+C19,mpi,glider_wrap,1d,rma,2,1,1,PASS,"rma at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C20,mpi,glider_wrap,1d,rma,4,1,1,PASS,rma at P=4.,complete grid and JSON match the oracle
+C21,mpi,nondivisible_rows,1d,rma,4,1,1,PASS,rma with uneven blocks.,complete grid and JSON match the oracle
+C22,mpi,local_rows_one,1d,rma,4,1,1,PASS,rma when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C23,mpi,glider_wrap,2d,rma,2,1,1,PASS,"rma at P=2, where both neighbours are one rank.",complete grid and JSON match the oracle
+C24,mpi,glider_wrap,2d,rma,4,1,1,PASS,rma at P=4.,complete grid and JSON match the oracle
+C25,mpi,nondivisible_rows,2d,rma,4,1,1,PASS,rma with uneven blocks.,complete grid and JSON match the oracle
+C26,mpi,local_rows_one,2d,rma,4,1,1,PASS,rma when blocks are too thin for an interior.,complete grid and JSON match the oracle
+C27,mpi,glider_wrap,2d,rma,8,1,1,PASS,rma on a 2x4 process grid.,complete grid and JSON match the oracle
+C28,mpi,glider_wrap,1d,persistent,2,1,1,PASS,"persistent at P=2: both neighbours are one rank, and the two request sets alternate with the grid buffers.",complete grid and JSON match the oracle
+C29,mpi,nondivisible_rows,1d,persistent,4,1,1,PASS,persistent with uneven row blocks and an odd number of generations.,complete grid and JSON match the oracle
+C30,mpi,local_rows_one,2d,persistent,4,1,1,PASS,"persistent on a 2x2 process grid, where neighbours repeat and blocks have no interior.",complete grid and JSON match the oracle
+C31,mpi,glider_wrap,2d,persistent,8,1,1,PASS,persistent on a 2x4 process grid: the column buffers have their own requests.,complete grid and JSON match the oracle
+C32,mpi,glider_wrap,1d,sendrecv2,2,1,1,PASS,sendrecv2 at P=2: one rank sends first and the other receives first.,complete grid and JSON match the oracle
+C33,mpi,glider_wrap,1d,sendrecv2,3,1,1,PASS,"sendrecv2 on an odd ring (P=3), where two neighbouring ranks both send first.",complete grid and JSON match the oracle
+C34,mpi,glider_wrap,2d,sendrecv2,9,1,1,PASS,"sendrecv2 on a 3x3 process grid: odd cycles along rows, columns and diagonals.",complete grid and JSON match the oracle
+C35,mpi,nondivisible_rows,2d,sendrecv2,6,1,1,PASS,sendrecv2 on a 2x3 process grid with uneven blocks.,complete grid and JSON match the oracle
+H01,hybrid,glider_wrap,1d,blocking,2,2,1,PASS,Threads over row blocks.,complete grid and JSON match the oracle
+H02,hybrid,glider_wrap,2d,blocking,4,2,1,PASS,Threads over 2D blocks.,complete grid and JSON match the oracle
+H03,hybrid,glider_wrap,2d,overlap,2,4,1,PASS,Interior rows computed by threads while messages are in flight.,complete grid and JSON match the oracle
+H04,hybrid,glider_wrap,2d,rma,4,2,1,PASS,Threads between RMA synchronisation points.,complete grid and JSON match the oracle
+H05,hybrid,nondivisible_rows,1d,blocking,2,4,1,PASS,More threads than local rows.,complete grid and JSON match the oracle
+L01,mpi,large_random,1d,blocking,36,1,1,PASS,"Larger random grid, row blocks, byte-compared with the serial output.",checksum and complete output bytes match serial
+L02,mpi,large_random,2d,blocking,36,1,1,PASS,"Larger random grid on a 6x6 process grid using blocking, byte-compared with the serial output.",checksum and complete output bytes match serial
+L03,mpi,large_random,2d,nonblocking,36,1,1,PASS,"Larger random grid on a 6x6 process grid using nonblocking, byte-compared with the serial output.",checksum and complete output bytes match serial
+L04,mpi,large_random,2d,overlap,36,1,1,PASS,"Larger random grid on a 6x6 process grid using overlap, byte-compared with the serial output.",checksum and complete output bytes match serial
+L05,mpi,large_random,2d,rma,36,1,1,PASS,"Larger random grid on a 6x6 process grid using rma, byte-compared with the serial output.",checksum and complete output bytes match serial
