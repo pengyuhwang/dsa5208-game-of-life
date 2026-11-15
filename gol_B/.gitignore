@@ -1,0 +1,6 @@
+build/
+*.bin
+raw_results.csv
+raw_results.csv.err
+summary.md
+__pycache__/
