@@ -21,7 +21,10 @@ jobs 1527052 preflight, 1527951/52/55 weak, 1527953/54/56 strong+backends;
 the later jobs 1535552/53 backfilled `persistent` and `sendrecv2` at
 16/64/256 ranks):
 256 ranks verified across 4 nodes, strong scaling at 16384² reaches 146x (1D) /
-198x (2D) at 256 ranks, 2D is 26% faster there, weak scaling 55.7% at 256
+198x (2D) at 256 ranks in job 1527956 (the group report states the cross-job
+range instead: the 2D gain at 256 ranks is job-dependent — 2–30% where it
+appears, 4% slower in job 1529185 — so no single number is claimed), weak
+scaling 55.7% at 256
 ranks, backends within 2% up to 64 ranks and RMA 7–13% slower at 256.
 Raw CSVs in `results/`, figures in
 `report/figures/` (serial, strong, weak, backends and GPU/CPU — five log-axis
@@ -67,9 +70,6 @@ scripts/serial_scaling.sh       serial runtime vs problem size, 5 grid levels
 scripts/run_tests.sh            builds and runs A's tools/verify.py --require-all
 scripts/test_comm.sh            decomp x comm x ranks correctness matrix vs serial
 scripts/halo_stats.sh           halo_seconds batch (GOL_HALO_STATS=1), results/halo_atlas.csv
-scripts/halo_stats_atlas.pbs    Atlas wrapper for halo_stats.sh (16/32/64 ranks, 1 node; local only)
-scripts/submit_vanda_newcomm_p1.pbs  Vanda backfill, 16/64 ranks (local only)
-scripts/submit_vanda_newcomm_p2.pbs  Vanda backfill, 256 ranks (local only)
 scripts/bench_atlas.sh          batch driver, writes results/raw_results.csv
 scripts/summary.py              median kernel time, speedup and efficiency table
 scripts/plot_results.py         renders report/figures/*.png from results/
@@ -78,16 +78,14 @@ report/figures/*.png            serial + strong/weak + backends + GPU (log axes)
 results/*.csv                   the CSVs read by plot_results.py and cited in the report
                                 (serial_scaling, e2_weak, e3_backends, gpu, halo_atlas,
                                 e4_newcomm_p1/p2)
-archive/pbs/                    PBS templates and ssh_wrapper (local working copy only:
-archive/scripts/                superseded helper scripts; not in the public repo,
-archive/results/                which carries no PBS scripts, logs or superseded batches)
 ```
 
-The three `archive/` directories exist in the local working copy for
-reproduction. They are deliberately **not** pushed to the public repository:
-the assignment asks for source code with a README and explicitly excludes
-PBS scripts and terminal logs. Every command below that mentions
-`archive/pbs/...` therefore refers to the local copy only.
+PBS submission scripts are deliberately **not** in this repository: the
+assignment asks for source code with a README and explicitly excludes PBS
+scripts, logs and terminal output. Every `qsub`-style command below was run
+with a local wrapper that only sets queue, `select=` and walltime around the
+`bash scripts/...` calls shown here; to reproduce, write an equivalent PBS
+job around those commands.
 
 ## Build
 
@@ -218,9 +216,9 @@ which is out of scope. Two NVHPC-specific facts found while getting there: a
 target region may not hold only a declare-target call (NVC++-S-0155), so the
 loop is inlined; and the blocking backend finishes inside `halo_post`, so the
 ghost push must happen there too — before that fix, only the blocking cases
-failed. `archive/pbs/submit_vanda_gpu.pbs` (free pool) and
-`archive/pbs/submit_vanda_gpu_paid.pbs` (`batch_gpu`) both run the checksum matrix
-before recording timings.
+failed. Both GPU batch submissions (free pool and `batch_gpu`) ran the
+checksum matrix before recording timings; the PBS wrappers themselves are
+excluded from this repository.
 
 ## Timing contract
 
@@ -314,8 +312,8 @@ RANKS="1 2 4 8" bash scripts/bench_atlas.sh
 SKIP_SERIAL=1 APPEND=1 GRIDS="4096x4096" RANKS="16" \
 DECOMPS="1d 2d" bash scripts/bench_atlas.sh
 
-# Full batch (normally through the queue)
-qsub archive/pbs/submit_atlas.pbs
+# Full batch (normally through the queue; PBS wrapper not part of this repo)
+bash scripts/bench_atlas.sh
 python3 scripts/summary.py results/raw_results.csv
 ```
 
@@ -359,18 +357,23 @@ figures via `python3 scripts/plot_results.py`.
 - **Serial scaling** (single core, 512²–8192², 100 steps, 3 repeats):
   0.111 / 0.442 / 1.273 / 5.088 / 20.317 s; log-log slope **0.927** against
   cell count, throughput 2.4–3.3 M cells/s (`serial_scaling.png`).
-- **Strong scaling** (16384² x 200 steps, serial 131.18 s): 1D 15.8x / 53.0x /
-  **146.3x** at 16/64/256 ranks; 2D 15.9x / 53.8x / **197.8x**
+- **Strong scaling** (in-job, job 1527956; serial 131.18 s): 1D 15.8x / 53.0x /
+  **146.3x** at 16/64/256 ranks; 2D 15.9x / 53.8x / **197.8x** — the 2D
+  figure is this job's median, not the group report's headline (Section 7.5
+  of the report gives the cross-job range)
   (`report/figures/strong_scaling.png`).
 - **Weak scaling** (1024² cells/rank x 500 steps, 1–256 ranks): 1.140 →
   1.471 s at 64 (**77.5%**), 2.048 s at 256 (**55.7%**, 1D) / 2.071 s
-  (55.0%, 2D). The 64→128 drop is the single-node to two-node transition
+  (55.0%, 2D). The 64→128 drop coincides with the job first spanning two
+  nodes; its cause was not isolated (report Section 7.3)
   (`weak_scaling.png`).
 - **Backends** (16384² x 200 steps): at 16/64 ranks all four are within 2%; at
   256 ranks RMA is +7% (1D) / +13% (2D) and overlap recovers 4% in 2D
   (`backends.png`).
-- **2D vs 1D at 256 ranks**: 0.663 vs 0.897 s — 26% faster once ranks outnumber
-  node cores, because the 1D halo is two rows of 16384 bytes per step.
+- **2D vs 1D at 256 ranks (job 1527956)**: 0.663 vs 0.897 s — 26% faster in
+  this job, because the 1D halo is two rows of 16384 bytes per step. The gain
+  does not reproduce at a fixed size: 2–30% where it appears, 4% slower in
+  job 1529185, so the report gives the range, not one number.
 - **GPU vs CPU** (Vanda A40, 1 rank, 300 steps, median of 3): 2048² GPU 0.2505 s
   vs 36 CPU threads 0.1245 s (2.01x slower); 4096² GPU 0.4919 s vs 0.4653 s
   (1.06x) — per-step host sync plus kernel launch, no speedup claimed
@@ -390,8 +393,9 @@ before the 256-rank batches were submitted.
 module load gcc11/11.5.0
 module load openmpi4/gcc/4.1.8
 cd gol_B && make -B build/mpi
-qsub archive/pbs/submit_vanda_free.pbs   # free: 128 ranks, strong/weak/backends
-qsub archive/pbs/submit_vanda_256.pbs    # CHARGEABLE: 256 ranks, see below
+# then submit a PBS job (wrappers are local-only):
+#   auto_free: 2 x 64 ranks, strong/weak/backends
+#   auto (CHARGEABLE): 4 x 64 = 256 ranks, see below
 ```
 
 ### Queue routing (measured 2026-11-04 with `qstat -Qf`)
@@ -405,11 +409,11 @@ qsub archive/pbs/submit_vanda_256.pbs    # CHARGEABLE: 256 ranks, see below
 Consequences, all checked rather than assumed:
 
 - A 256-core job must go to `auto` (which routes into `batch_cpu`); submitting
-  it with `-q auto_free` leaves it queued forever. `submit_vanda_256.pbs` uses
-  `-q auto`, `submit_vanda_free.pbs` uses `-q auto_free`.
+  it with `-q auto_free` leaves it queued forever. The 256-rank batches used
+  `-q auto`, the free batches `-q auto_free`.
 - No `#PBS -P` is needed: a probe job (1518788, `/bin/hostname`, 1 core) landed
-  on `batch_cpu` with `project = personal-songsifan` and exited 0. The charge is
-  therefore real and lands on the account's personal project.
+  on `batch_cpu` and exited 0. The charge is therefore real and lands on the
+  submitting account's own project.
 - A held 256-core probe (`qsub -h -q auto -l select=4:ncpus=64:mpiprocs=64`,
   job 1518784) was accepted by the server and then deleted, so the resource
   request itself is legal.
@@ -421,16 +425,16 @@ Consequences, all checked rather than assumed:
 
 ### Launch mechanics
 
-- `archive/pbs/submit_vanda_free.pbs`: `select=2:ncpus=64:mpiprocs=64` = 128 ranks,
+- Free-queue batch (local wrapper): `select=2:ncpus=64:mpiprocs=64` = 128 ranks,
   `-q auto_free`. Strong scaling 4096² at 1/4/16/64/128, weak scaling 1024²
   cells per rank at 1/4/16/64, backend comparison at 64/128 ranks. Hybrid
   disabled; serial baseline rebuilt with the Vanda toolchain.
-- `archive/pbs/submit_vanda_256.pbs`: `select=4:ncpus=64:mpiprocs=64` = 256 ranks,
+- 256-rank batch (local wrapper): `select=4:ncpus=64:mpiprocs=64` = 256 ranks,
   `-q auto`, `walltime=00:12:00`. Stage 0 is a 256-rank preflight at 512²
   (20 steps, all eight `decomp x comm`, REPEAT=1) with `set -e`, so a broken
   launch aborts in about a minute. Stages 1-3 reuse the free job's sweep
   definitions restricted to 1/64/256.
-- `archive/pbs/ssh_wrapper`: OpenMPI `plm_rsh` re-execs `ssh` from `PATH` to start
+- SSH wrapper (local, not in this repo): OpenMPI `plm_rsh` re-execs `ssh` from `PATH` to start
   `orted` on peer nodes; the job copies it to `bin/ssh` and prepends `PATH`
   (BatchMode, no host-key prompts, 15 s timeout). Compute nodes get no module
   environment over ssh, hence `mpirun --prefix <mpi-root>`.
